@@ -1,6 +1,6 @@
 const express = require("express");
 
-class AppController {
+class App {
   constructor() {
     this.express = express();
 
@@ -10,6 +10,7 @@ class AppController {
 
   middlewares() {
     this.express.use(express.json());
+    this.express.use(express.urlencoded({ extended: false }));
   }
 
   routes() {
@@ -17,4 +18,4 @@ class AppController {
   }
 }
 
-module.exports = new AppController().express;
+module.exports = new App().express;
