@@ -8,6 +8,6 @@ routes.get("/", (req, res) => {
   return res.send("fala tu");
 });
 
-routes.post("/users/", (req, res) => UserController.store);
+routes.post("/users/", UserController.store);
 
 module.exports = routes;
