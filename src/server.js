@@ -1,5 +1,22 @@
-const app = require("./app");
+const express = require("express");
+const bodyParser = require("body-parser");
 
-app.listen(process.env.PORT || 3000);
+class App {
+  constructor() {
+    this.express = express();
 
-console.log("Servidor aberto na porta 3000");
+    this.middlewares();
+    this.routes();
+  }
+
+  middlewares() {
+    this.express.use(express.json());
+    this.express.use(express.urlencoded({ extended: false }));
+  }
+
+  routes() {
+    this.express.use(require("./routes"));
+  }
+}
+
+module.exports = new App().express;
