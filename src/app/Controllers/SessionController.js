@@ -5,21 +5,21 @@ class SessionController {
     const { email, password } = req.body;
 
     const user = await User.findOne({
-      email,
+      where: { email },
       raw: true
     });
-
-    console.log(user);
 
     if (!user) {
       return res.status(400).json({ error: "Usuário não encontrado" });
     }
 
-    if (!(await user.compareHash(password))) {
+    if (!await user.checkPassword(password)) {
       return res.status(400).json({ error: "Senha inválida" });
     }
 
-    return res.json({ user });
+    return res
+      .status(200)
+      .json({ status: "success", msg: "Login efetuado com sucesso" });
   }
 }
 

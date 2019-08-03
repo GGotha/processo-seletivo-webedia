@@ -1,4 +1,4 @@
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define(
@@ -22,6 +22,10 @@ module.exports = (sequelize, DataTypes) => {
       tableName: "users"
     }
   );
+
+  User.prototype.checkPassword = function (password) {
+    return bcrypt.compare(password, this.password_hash);
+  };
 
   return User;
 };
