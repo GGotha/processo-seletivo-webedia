@@ -1,5 +1,5 @@
 const { User } = require("../models");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 class UserController {
   async store(req, res) {
@@ -9,14 +9,16 @@ class UserController {
       return res.status(400).json({ error: "Email já cadastrado" });
     }
 
-    const password_hash = await bcrypt.hash(password, 8);
+    // const password_hash = await bcrypt.hash(password, 8);
 
     try {
       const criarUsuario = await User.create({
         name,
         email,
-        password: password_hash
+        password
       });
+
+      console.log("usuario cadastrado");
 
       return res.send({ criarUsuario });
     } catch (err) {
