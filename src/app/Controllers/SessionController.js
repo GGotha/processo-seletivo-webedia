@@ -9,11 +9,13 @@ class SessionController {
       raw: true
     });
 
+    console.log(user);
+
     if (!user) {
       return res.status(400).json({ error: "Usuário não encontrado" });
     }
 
-    if (!await user.checkPassword(password)) {
+    if (!(await user.checkPassword(password))) {
       return res.status(400).json({ error: "Senha inválida" });
     }
 

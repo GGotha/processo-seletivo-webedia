@@ -23,8 +23,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  User.prototype.checkPassword = function (password) {
-    return bcrypt.compare(password, this.password_hash);
+  console.log(User.prototype);
+
+  User.prototype.checkPassword = function(password) {
+    return bcrypt.compare(password, password_hash);
   };
 
   return User;
