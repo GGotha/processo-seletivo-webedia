@@ -6,9 +6,7 @@ const Joi = require("joi");
 
 class ArtigoController {
   async create(req, res) {
-    // const { titulo, mensagem, subtitulo } = req.body;
-
-    const artigo = Joi.object().keys({
+    const joiArtigo = Joi.object().keys({
       titulo: Joi.string()
         .min(5)
         .max(30)
@@ -23,9 +21,7 @@ class ArtigoController {
         .required()
     });
 
-    // console.log(artigo, req.body);
-
-    const { value: joi, error } = Joi.validate(req.body, artigo);
+    const { value: joi, error } = Joi.validate(req.body, joiArtigo);
     if (error && error.details) {
       return res.status(400).json({ status: "error", msg: error.message });
     }
@@ -75,7 +71,6 @@ class ArtigoController {
         raw: true
       });
 
-      //todo mensagem de erro quando usuario tentar apagar o artigo de outro usuario
       const { id: idCliente } = getAllInfoUser;
 
       const delArtigoById = await Artigo.destroy({
@@ -83,10 +78,23 @@ class ArtigoController {
         raw: true
       });
 
-      return res.send({ status: "success", msg: "deletado" });
+      if (delArtigoById === 0) {
+        return res.send({
+          status: "error",
+          msg: "Você não pode deletar um artigo inexistente ou de outra pessoa"
+        });
+      } else {
+        return res.send({
+          status: "success",
+          msg: "Artigo deletado com sucesso"
+        });
+      }
+
+      // return res.send({ delArtigoById });
     } catch (error) {
+      console.log(error);
       return res.send({
-        status: "success",
+        status: "error",
         msg: "Erro ao deletar artigo, tente novamente mais tarde"
       });
     }
