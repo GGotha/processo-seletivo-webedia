@@ -1,15 +1,14 @@
 const { User } = require("../models");
-const bcrypt = require("bcryptjs");
 
 class UserController {
   async store(req, res) {
     const { name, email, password } = req.body;
 
     if (await User.findOne({ where: { email } })) {
-      return res.status(400).json({ error: "Email já cadastrado" });
+      return res
+        .status(400)
+        .json({ status: "error", msg: "Email já cadastrado" });
     }
-
-    // const password_hash = await bcrypt.hash(password, 8);
 
     try {
       const criarUsuario = await User.create({
@@ -18,12 +17,13 @@ class UserController {
         password
       });
 
-      console.log("usuario cadastrado");
-
-      return res.send({ criarUsuario });
+      return res.send({
+        status: "success",
+        msg: "Usuário criado"
+      });
     } catch (err) {
       console.log(err);
-      return res.send({ error: "erro interno" });
+      return res.send({ status: "error", msg: "erro interno" });
     }
   }
 }
