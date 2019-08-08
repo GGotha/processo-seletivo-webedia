@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
       autor: DataTypes.STRING,
       titulo: DataTypes.STRING,
       subtitulo: DataTypes.STRING,
+      mensagem: DataTypes.TEXT,
       permalink: DataTypes.STRING,
       id_usuario: DataTypes.INTEGER,
       data_publicacao: DataTypes.DATE,

@@ -25,6 +25,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
+      mensagem: {
+        allowNull: false,
+        type: Sequelize.TEXT
+      },
       permalink: {
         allowNull: false,
         type: Sequelize.STRING

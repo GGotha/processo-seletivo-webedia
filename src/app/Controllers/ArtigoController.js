@@ -3,21 +3,21 @@ const { Artigo } = require("../models");
 const moment = require("moment");
 const crypto = require("crypto");
 const Joi = require("joi");
+const fs = require("fs");
 
 class ArtigoController {
   async create(req, res) {
     const joiArtigo = Joi.object().keys({
       titulo: Joi.string()
         .min(5)
-        .max(30)
+        .max(70)
         .required(),
       mensagem: Joi.string()
         .min(5)
-        .max(30)
         .required(),
       subtitulo: Joi.string()
         .min(5)
-        .max(20)
+        .max(70)
         .required()
     });
 
@@ -41,6 +41,7 @@ class ArtigoController {
         autor,
         titulo: joi.titulo,
         subtitulo: joi.subtitulo,
+        mensagem: joi.mensagem,
         permalink: generateTokenPermaLink,
         data_publicacao: moment(),
         data_ultima_atualizacao: moment()
@@ -89,10 +90,7 @@ class ArtigoController {
           msg: "Artigo deletado com sucesso"
         });
       }
-
-      // return res.send({ delArtigoById });
     } catch (error) {
-      console.log(error);
       return res.send({
         status: "error",
         msg: "Erro ao deletar artigo, tente novamente mais tarde"
@@ -113,6 +111,8 @@ class ArtigoController {
         autor,
         titulo,
         subtitulo,
+        mensagem,
+        permalink,
         data_publicacao,
         data_ultima_atualizacao
       } = getArtigoById;
@@ -123,6 +123,8 @@ class ArtigoController {
         autor,
         titulo,
         subtitulo,
+        mensagem,
+        permalink,
         data_publicacao,
         data_ultima_atualizacao
       });
@@ -146,6 +148,7 @@ class ArtigoController {
         autor,
         titulo,
         subtitulo,
+        mensagem,
         data_publicacao,
         data_ultima_atualizacao
       } = getArtigoByPermaLink;
@@ -156,6 +159,7 @@ class ArtigoController {
         autor,
         titulo,
         subtitulo,
+        mensagem,
         data_publicacao,
         data_ultima_atualizacao
       });
