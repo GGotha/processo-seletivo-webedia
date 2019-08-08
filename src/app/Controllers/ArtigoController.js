@@ -17,25 +17,126 @@ class ArtigoController {
       createdAt: data_publicacao,
       updatedAt: data_ultima_atualizacao
     } = getAllInfoUser;
-    console.log(getAllInfoUser);
 
     try {
       const addArtigoBD = await Artigo.create({
         id_usuario: id,
         autor: autor,
         titulo,
-        mensagem,
         subtitulo,
+        permalink: "fala",
         data_publicacao,
         data_ultima_atualizacao
       });
-      return res.json({ addArtigoBD });
+      return res.json({
+        status: "success",
+        msg: "Artigo criado com sucesso!",
+        autor,
+        titulo,
+        subtitulo,
+        mensagem,
+        data_publicacao,
+        data_ultima_atualizacao
+      });
     } catch (err) {
       return res.json({ err });
     }
   }
 
-  async delete(req, res) {}
+  async delete(req, res) {
+    const idArtigo = req.params.id;
+
+    // console.log(idCliente);
+
+    try {
+      const getAllInfoUser = await User.findOne({
+        where: { id: req.userId },
+        raw: true
+      });
+
+      const { id: idCliente } = getAllInfoUser;
+
+      const delArtigoById = await Artigo.destroy({
+        where: { id_usuario: idCliente, id: idArtigo },
+        raw: true
+      });
+
+      return res.send({ status: "success", msg: "deletado" });
+    } catch (error) {
+      console.log(error);
+      return res.send({
+        status: "success",
+        msg: "Erro ao deletar artigo, tente novamente mais tarde"
+      });
+    }
+  }
+
+  async listById(req, res, next) {
+    const idArtigo = req.params.id;
+
+    const getArtigoById = await Artigo.findOne({
+      where: { id: idArtigo },
+      raw: true
+    });
+
+    try {
+      const {
+        autor,
+        titulo,
+        subtitulo,
+        data_publicacao,
+        data_ultima_atualizacao
+      } = getArtigoById;
+
+      return res.send({
+        status: "success",
+        msg: "Artigo Encontrado",
+        autor,
+        titulo,
+        subtitulo,
+        data_publicacao,
+        data_ultima_atualizacao
+      });
+    } catch (error) {
+      return res.send({
+        status: "error",
+        msg: "Erro ao procurar artigo, tente novamente mais tarde"
+      });
+    }
+  }
+
+  async listByPermalink(req, res) {
+    const { permalink } = req.body;
+
+    try {
+      const getArtigoByPermaLink = await Artigo.findOne({
+        where: { permalink }
+      });
+      //todo arrumar mensagem no permalink
+      const {
+        autor,
+        titulo,
+        subtitulo,
+        data_publicacao,
+        data_ultima_atualizacao
+      } = getArtigoByPermaLink;
+
+      return res.send({
+        status: "success",
+        msg: "Artigo encontrado com sucesso",
+        autor,
+        titulo,
+        subtitulo,
+        data_publicacao,
+        data_ultima_atualizacao
+      });
+    } catch (error) {
+      return res.send({
+        status: "error",
+        msg: "Erro ao procurar artigo, tente novamente mais tarde"
+      });
+    }
+  }
 }
 
 module.exports = new ArtigoController();
