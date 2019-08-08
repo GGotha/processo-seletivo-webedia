@@ -1,6 +1,7 @@
 const { User } = require("../models");
 const { Artigo } = require("../models");
 const moment = require("moment");
+const crypto = require("crypto");
 
 class ArtigoController {
   async create(req, res) {
@@ -18,13 +19,17 @@ class ArtigoController {
       updatedAt: data_ultima_atualizacao
     } = getAllInfoUser;
 
+    console.log(getAllInfoUser);
+
     try {
+      const generateTokenPermaLink = crypto.randomBytes(20).toString("hex");
+
       const addArtigoBD = await Artigo.create({
         id_usuario: id,
-        autor: autor,
+        autor,
         titulo,
         subtitulo,
-        permalink: "fala",
+        permalink: generateTokenPermaLink,
         data_publicacao,
         data_ultima_atualizacao
       });
@@ -35,10 +40,11 @@ class ArtigoController {
         titulo,
         subtitulo,
         mensagem,
+        permalink: generateTokenPermaLink,
         data_publicacao,
         data_ultima_atualizacao
       });
-    } catch (err) {
+    } catch (error) {
       return res.json({ err });
     }
   }
@@ -46,14 +52,13 @@ class ArtigoController {
   async delete(req, res) {
     const idArtigo = req.params.id;
 
-    // console.log(idCliente);
-
     try {
       const getAllInfoUser = await User.findOne({
         where: { id: req.userId },
         raw: true
       });
 
+      //todo mensagem de erro quando usuario tentar apagar o artigo de outro usuario
       const { id: idCliente } = getAllInfoUser;
 
       const delArtigoById = await Artigo.destroy({
@@ -63,7 +68,6 @@ class ArtigoController {
 
       return res.send({ status: "success", msg: "deletado" });
     } catch (error) {
-      console.log(error);
       return res.send({
         status: "success",
         msg: "Erro ao deletar artigo, tente novamente mais tarde"
@@ -106,11 +110,11 @@ class ArtigoController {
   }
 
   async listByPermalink(req, res) {
-    const { permalink } = req.body;
+    const id = req.params.id;
 
     try {
       const getArtigoByPermaLink = await Artigo.findOne({
-        where: { permalink }
+        where: { permalink: id }
       });
       //todo arrumar mensagem no permalink
       const {
