@@ -22,7 +22,6 @@ class UserController {
         msg: "Usuário criado"
       });
     } catch (err) {
-      console.log(err);
       return res.send({ status: "error", msg: "erro interno" });
     }
   }

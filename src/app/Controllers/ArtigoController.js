@@ -2,24 +2,40 @@ const { User } = require("../models");
 const { Artigo } = require("../models");
 const moment = require("moment");
 const crypto = require("crypto");
+const Joi = require("joi");
 
 class ArtigoController {
   async create(req, res) {
-    const { titulo, mensagem, subtitulo } = req.body;
+    // const { titulo, mensagem, subtitulo } = req.body;
+
+    const artigo = Joi.object().keys({
+      titulo: Joi.string()
+        .min(5)
+        .max(30)
+        .required(),
+      mensagem: Joi.string()
+        .min(5)
+        .max(30)
+        .required(),
+      subtitulo: Joi.string()
+        .min(5)
+        .max(20)
+        .required()
+    });
+
+    // console.log(artigo, req.body);
+
+    const { value: joi, error } = Joi.validate(req.body, artigo);
+    if (error && error.details) {
+      return res.status(400).json({ status: "error", msg: error.message });
+    }
 
     const getAllInfoUser = await User.findOne({
       where: { id: req.userId },
       raw: true
     });
 
-    const {
-      name: autor,
-      id,
-      createdAt: data_publicacao,
-      updatedAt: data_ultima_atualizacao
-    } = getAllInfoUser;
-
-    console.log(getAllInfoUser);
+    const { name: autor, id } = getAllInfoUser;
 
     try {
       const generateTokenPermaLink = crypto.randomBytes(20).toString("hex");
@@ -27,25 +43,26 @@ class ArtigoController {
       const addArtigoBD = await Artigo.create({
         id_usuario: id,
         autor,
-        titulo,
-        subtitulo,
+        titulo: joi.titulo,
+        subtitulo: joi.subtitulo,
         permalink: generateTokenPermaLink,
-        data_publicacao,
-        data_ultima_atualizacao
+        data_publicacao: moment(),
+        data_ultima_atualizacao: moment()
       });
       return res.json({
         status: "success",
         msg: "Artigo criado com sucesso!",
         autor,
-        titulo,
-        subtitulo,
-        mensagem,
+        titulo: joi.titulo,
+        subtitulo: joi.subtitulo,
+        mensagem: joi.mensagem,
         permalink: generateTokenPermaLink,
-        data_publicacao,
-        data_ultima_atualizacao
+        data_publicacao: moment(),
+        data_ultima_atualizacao: moment()
       });
     } catch (error) {
-      return res.json({ err });
+      console.log(error);
+      return res.json({ error });
     }
   }
 
@@ -104,7 +121,7 @@ class ArtigoController {
     } catch (error) {
       return res.send({
         status: "error",
-        msg: "Erro ao procurar artigo, tente novamente mais tarde"
+        msg: "Erro ao encontrar artigo, tente novamente mais tarde"
       });
     }
   }
