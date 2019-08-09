@@ -1,13 +1,15 @@
 const { User } = require("../models");
 const { Artigo } = require("../models");
 const moment = require("moment");
+const sequelize = require("sequelize");
 const crypto = require("crypto");
 const Joi = require("joi");
-const fs = require("fs");
+// const { Op } = db.sequelize;
+const sequelizePaginate = require("sequelize-paginate");
 
 class ArtigoController {
   async create(req, res) {
-    const joiArtigo = Joi.object().keys({
+    const joiCriarArtigo = Joi.object().keys({
       titulo: Joi.string()
         .min(5)
         .max(70)
@@ -21,7 +23,7 @@ class ArtigoController {
         .required()
     });
 
-    const { value: joi, error } = Joi.validate(req.body, joiArtigo);
+    const { value: joi, error } = Joi.validate(req.body, joiCriarArtigo);
     if (error && error.details) {
       return res.status(400).json({ status: "error", msg: error.message });
     }
@@ -143,7 +145,7 @@ class ArtigoController {
       const getArtigoByPermaLink = await Artigo.findOne({
         where: { permalink: id }
       });
-      //todo arrumar mensagem no permalink
+
       const {
         autor,
         titulo,
@@ -169,6 +171,29 @@ class ArtigoController {
         msg: "Erro ao procurar artigo, tente novamente mais tarde"
       });
     }
+  }
+  async listAll(req, res) {
+    const getAllArtigos = await Artigo.findAll({
+      attributes: [
+        "id",
+        "autor",
+        "titulo",
+        "subtitulo",
+        "mensagem",
+        "permalink",
+        "data_publicacao",
+        "data_ultima_atualizacao"
+      ],
+      page: req.query.page || 1,
+      paginate: 15,
+      limit: 4
+    });
+
+    const { docs, pages, total } = await Artigo.paginate(getAllArtigos);
+
+    console.log(pages);
+
+    return res.json({ docs, pages, total });
   }
 }
 

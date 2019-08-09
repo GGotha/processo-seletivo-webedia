@@ -1,4 +1,4 @@
-const bcrypt = require("bcryptjs");
+const sequelizePaginate = require("sequelize-paginate");
 
 module.exports = (sequelize, DataTypes) => {
   const Artigo = sequelize.define(
@@ -19,6 +19,8 @@ module.exports = (sequelize, DataTypes) => {
       timestamps: false
     }
   );
+
+  sequelizePaginate.paginate(Artigo);
 
   return Artigo;
 };
