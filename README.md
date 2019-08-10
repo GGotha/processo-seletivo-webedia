@@ -4,7 +4,7 @@
 
 ## :ballot_box_with_check: Para fazer
 
-- TDD (jest) :heavy_check_mark:
+- TDD - Testes Unitários (jest) :heavy_check_mark:
 - JWT (jsonwebtoken) :heavy_check_mark:
 - Sistema de paginação :heavy_check_mark:
 
@@ -46,8 +46,8 @@
 <br>
 <img src="./src/assets/readme/db.png" alt="docker">
 
-<h3>Abra o Insomnia</h3>
-<h4>Tipos de rotas existentes:</h4>
+<!-- <h3>Abra o Insomnia</h3>
+<h4>Tipos de rotas existentes:</h4> -->
 <!-- ```
 /users/ (POST)
 / (POST)
@@ -57,7 +57,7 @@
 /artigo/permalink/:permalink (GET)
 /artigo (POST)
 ``` -->
-```
+<!-- ```
 /users/ (POST)
 / (POST)
 /artigo/all?page=0 (GET)
@@ -65,5 +65,5 @@
 /artigo/:id (DELETE)
 /artigo/permalink/:permalink (GET)
 /artigo (POST)
-```
+``` -->
 <br>
