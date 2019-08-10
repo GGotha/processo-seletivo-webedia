@@ -15,16 +15,21 @@
 ## Requisitos
 
 ```
--Yarn ou npm
--Inmsominia ou postman
--Docker
--Workbench SQL
+-Node / https://nodejs.org/en/
+-Yarn ou npm / https://yarnpkg.com
+-Inmsominia ou postman / https://insomnia.rest
+-Docker / https://www.docker.com/
+-Workbench SQL / https://www.heidisql.com/
 ```
 
 ## Passos
 
 <h4 align="left">
     1º Passo - Clone o repositório - https://github.com/GGotha/processo-seletivo-webedia.git
+    <div></div>
     <img src="./src/assets/Sem título.png" alt="docker">
-    2º Passo - Abra o docker e insira o seguinte comando -
+</h4>
+<h4 align="left">
+    2º Passo - Docker
+    <img src="./src/assets/Sem título.png" alt="docker">
 </h4>
