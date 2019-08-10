@@ -1,11 +1,8 @@
 const { User } = require("../models");
 const { Artigo } = require("../models");
 const moment = require("moment");
-const sequelize = require("sequelize");
 const crypto = require("crypto");
 const Joi = require("joi");
-// const { Op } = db.sequelize;
-const sequelizePaginate = require("sequelize-paginate");
 
 class ArtigoController {
   async create(req, res) {
@@ -173,27 +170,36 @@ class ArtigoController {
     }
   }
   async listAll(req, res) {
-    const getAllArtigos = await Artigo.findAll({
-      attributes: [
-        "id",
-        "autor",
-        "titulo",
-        "subtitulo",
-        "mensagem",
-        "permalink",
-        "data_publicacao",
-        "data_ultima_atualizacao"
-      ],
-      page: req.query.page || 1,
-      paginate: 15,
-      limit: 4
-    });
+    try {
+      const getAllArtigos = await Artigo.paginate({
+        attributes: [
+          "id",
+          "autor",
+          "titulo",
+          "subtitulo",
+          "mensagem",
+          "permalink",
+          "data_publicacao",
+          "data_ultima_atualizacao"
+        ],
+        pageIndex: req.query.page || 0,
+        pageSize: 1
+      });
 
-    const { docs, pages, total } = await Artigo.paginate(getAllArtigos);
+      const { pageIndex, pageSize } = getAllArtigos;
 
-    console.log(pages);
+      const entities = getAllArtigos.entities[0];
 
-    return res.json({ docs, pages, total });
+      return res.json({
+        status: "success",
+        msg: "Artigo encontrado com sucesso",
+        infArtigo: entities,
+        numeroDaPagina: pageIndex,
+        artigoPorPagina: pageSize
+      });
+    } catch (error) {
+      return res.json({ status: "error", msg: "Erro ao encontrar artigo" });
+    }
   }
 }
 

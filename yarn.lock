@@ -2582,6 +2582,13 @@ sequelize-pool@^2.3.0:
   resolved "https://registry.yarnpkg.com/sequelize-pool/-/sequelize-pool-2.3.0.tgz#64f1fe8744228172c474f530604b6133be64993d"
   integrity sha512-Ibz08vnXvkZ8LJTiUOxRcj1Ckdn7qafNZ2t59jYHMX1VIebTAOYefWdRYFt6z6+hy52WGthAHAoLc9hvk3onqA==
 
+sequelize-simple-pagination@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/sequelize-simple-pagination/-/sequelize-simple-pagination-0.1.0.tgz#838f0dc23ef2eb4cf6e721d21de623b35c1c4ad1"
+  integrity sha512-1ySmOdKNmizG6nqgRfkyi+AjTsLv2Aspfy+rUlTFbZrZDKJzp5A/30c8FVdtjt+iS1l6rbJEWEbnxJ9V/6lbRg==
+  dependencies:
+    lodash "^4.17.11"
+
 sequelize@^5.13.0:
   version "5.13.0"
   resolved "https://registry.yarnpkg.com/sequelize/-/sequelize-5.13.0.tgz#c600775bbd738d7e4ec1bbe05d29655615a5d734"

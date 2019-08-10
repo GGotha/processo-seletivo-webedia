@@ -37,6 +37,7 @@
     "mysql2": "^1.6.5",
     "sequelize": "^5.13.0",
     "sequelize-paginate": "^1.1.6",
+    "sequelize-simple-pagination": "^0.1.0",
     "youch": "^2.0.10"
   }
 }

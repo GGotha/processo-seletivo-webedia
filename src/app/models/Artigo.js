@@ -1,4 +1,5 @@
-const sequelizePaginate = require("sequelize-paginate");
+// const sequelizePaginate = require("sequelize-paginate");
+const withPagination = require("sequelize-simple-pagination");
 
 module.exports = (sequelize, DataTypes) => {
   const Artigo = sequelize.define(
@@ -20,7 +21,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  sequelizePaginate.paginate(Artigo);
+  const options = {
+    methodName: "paginate",
+    primaryKey: "id"
+  };
+
+  withPagination(options)(Artigo);
+
+  // sequelizePaginate.paginate(Artigo);
 
   return Artigo;
 };
