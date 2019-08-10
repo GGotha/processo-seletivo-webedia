@@ -1,8 +1,10 @@
-# Como testar a API
+<h1 align="center">
+  #Como testar a API
+</h1>
 
-## Requisito
+## Requisitos
 
 ```bash
--yarn ou npm
--inmsominia ou postman
+-Yarn ou npm
+-Inmsominia ou postman
 ```
