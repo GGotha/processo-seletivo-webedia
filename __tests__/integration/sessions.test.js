@@ -48,4 +48,21 @@ describe("Autenticar", () => {
       .send({ email: "clashgustavo1@gmail.com", password: "webedia" });
     expect(response.body).toHaveProperty("token");
   });
+
+  it("Deve ver se o usuário está autenticado para acessar as rotas privadas", async () => {
+    const user = await User.create({
+      name: "Gustavo",
+      email: "clashgustavo1@gmail.com",
+      password: "webedia"
+    });
+
+    const response = await request(app)
+      .post("/artigo")
+      .set("Authorization", `${user.generateToken()}`);
+    //   .set(
+    //     "Authorization",
+    //     `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTY1NDEzMTgxLCJleHAiOjE1NjU0OTk1ODF9.8Un6Nm56nNWIeq3cvl7Itas0URN_9VTkrXwBEhHMnLE`
+    //   );
+    expect(response.status).toBe(200);
+  });
 });
