@@ -48,6 +48,15 @@
 
 <h3>Abra o Insomnia</h3>
 <h4>Tipos de rotas existentes:</h4>
+<!-- ```
+/users/ (POST)
+/ (POST)
+/artigo/all?page=0 (GET)
+/artigo/id/:id (GET)
+/artigo/:id (DELETE)
+/artigo/permalink/:permalink (GET)
+/artigo (POST)
+``` -->
 ```
 /users/ (POST)
 / (POST)
