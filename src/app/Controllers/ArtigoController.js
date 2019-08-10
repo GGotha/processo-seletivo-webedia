@@ -24,15 +24,14 @@ class ArtigoController {
     if (error && error.details) {
       return res.status(400).json({ status: "error", msg: error.message });
     }
-
-    const getAllInfoUser = await User.findOne({
-      where: { id: req.userId },
-      raw: true
-    });
-
-    const { name: autor, id } = getAllInfoUser;
-
     try {
+      const getAllInfoUser = await User.findOne({
+        where: { id: req.userId },
+        raw: true
+      });
+
+      const { name: autor, id } = getAllInfoUser;
+
       const generateTokenPermaLink = crypto.randomBytes(20).toString("hex");
 
       const addArtigoBD = await Artigo.create({
@@ -57,8 +56,10 @@ class ArtigoController {
         data_ultima_atualizacao: moment()
       });
     } catch (error) {
-      console.log(error);
-      return res.json({ error });
+      return res.status(400).json({
+        status: "error",
+        msg: "Erro ao criar artigo, tente novamente mais tarde"
+      });
     }
   }
 
@@ -79,7 +80,7 @@ class ArtigoController {
       });
 
       if (delArtigoById === 0) {
-        return res.send({
+        return res.status(400).send({
           status: "error",
           msg: "Você não pode deletar um artigo inexistente ou de outra pessoa"
         });
@@ -90,7 +91,7 @@ class ArtigoController {
         });
       }
     } catch (error) {
-      return res.send({
+      return res.status(400).send({
         status: "error",
         msg: "Erro ao deletar artigo, tente novamente mais tarde"
       });
@@ -128,7 +129,7 @@ class ArtigoController {
         data_ultima_atualizacao
       });
     } catch (error) {
-      return res.send({
+      return res.status(400).send({
         status: "error",
         msg: "Erro ao encontrar artigo, tente novamente mais tarde"
       });
@@ -163,7 +164,7 @@ class ArtigoController {
         data_ultima_atualizacao
       });
     } catch (error) {
-      return res.send({
+      return res.status(400).send({
         status: "error",
         msg: "Erro ao procurar artigo, tente novamente mais tarde"
       });
@@ -188,17 +189,19 @@ class ArtigoController {
 
       const { pageIndex, pageSize } = getAllArtigos;
 
-      const entities = getAllArtigos.entities[0];
+      const getOnlyArtigo = getAllArtigos.entities[0];
 
       return res.json({
         status: "success",
         msg: "Artigo encontrado com sucesso",
-        infArtigo: entities,
+        infArtigo: getOnlyArtigo,
         numeroDaPagina: pageIndex,
         artigoPorPagina: pageSize
       });
     } catch (error) {
-      return res.json({ status: "error", msg: "Erro ao encontrar artigo" });
+      return res
+        .status(400)
+        .json({ status: "error", msg: "Erro ao encontrar artigo" });
     }
   }
 }
