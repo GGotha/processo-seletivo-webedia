@@ -65,13 +65,14 @@
 ```
 
 <h3>Criação de usuário</h3>
-<h4>(POST)</h4>
-<h4>/users/</h4>
+<h4>Método: (POST)</h4>
+<h4>Rota: /users/</h4>
 <br>
 <img src="./src/assets/readme/user.png" alt="docker">
 <h3>Gerar sessão</h3>
-<h4>(POST)</h4>
-<h4>/</h4>
+<h4>Método: (POST)</h4>
+<h4>Rota: /</h4>
+<h4>O token gerado servirá para acessarmos as rotas privadas</h4>
 <br>
 <img src="./src/assets/readme/sessao.png" alt="docker">
 <br>
