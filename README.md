@@ -31,7 +31,8 @@
 <img src="./src/assets/readme/clone.png" alt="clone">
 
 <h3>Instale os pacotes e iniciar servidor</h3>
-<h4>Entre na pasta na qual você clonou, e execute yarn install para instalar todos os pacotes e depois execute yarn start para iniciar o servidor</h4>
+<h4>Entre na pasta na qual você clonou, e execute yarn install para instalar todos os pacotes e depois execute yarn
+    start para iniciar o servidor</h4>
 <br>
 <img src="./src/assets/readme/install.png" alt="clone">
 
@@ -64,11 +65,13 @@
 ```
 
 <h3>Criação de usuário</h3>
-<h4>ROTA: /users/ (POST)</h4>
+<h4>(POST)</h4>
+<h4>/users/</h4>
 <br>
 <img src="./src/assets/readme/user.png" alt="docker">
 <h3>Gerar sessão</h3>
-<h4>ROTA: / (POST)</h4>
+<h4>(POST)</h4>
+<h4>/</h4>
 <br>
-<img src="./src/assets/readme/user.png" alt="docker">
+<img src="./src/assets/readme/sessao.png" alt="docker">
 <br>
