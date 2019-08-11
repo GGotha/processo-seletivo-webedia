@@ -30,8 +30,8 @@
 <br>
 <img src="./src/assets/readme/clone.png" alt="clone">
 
-<h3>Instale os pacotes</h3>
-<h4>Entre na pasta na qual você clonou, e execute yarn install para instalar todos os pacotes</h4>
+<h3>Instale os pacotes e iniciar servidor</h3>
+<h4>Entre na pasta na qual você clonou, e execute yarn install para instalar todos os pacotes e depois execute yarn start para iniciar o servidor</h4>
 <br>
 <img src="./src/assets/readme/install.png" alt="clone">
 
@@ -46,17 +46,12 @@
 <br>
 <img src="./src/assets/readme/db.png" alt="docker">
 
-<!-- <h3>Abra o Insomnia</h3>
+<h3>Sincronização com o banco de dados</h3>
+<h4>Execute npx sequelize db:migrate dentro da pasta do projeto</h4>
+<br>
+<img src="./src/assets/readme/migration.png" alt="docker">
+
 <h4>Tipos de rotas existentes:</h4> -->
-<!-- ```
-/users/ (POST)
-/ (POST)
-/artigo/all?page=0 (GET)
-/artigo/id/:id (GET)
-/artigo/:id (DELETE)
-/artigo/permalink/:permalink (GET)
-/artigo (POST)
-``` -->
 
 ```bash
 /users/ (POST)
@@ -68,4 +63,12 @@
 /artigo (POST)
 ```
 
+<h3>Criação de usuário</h3>
+<h4>ROTA: /users/ (POST)</h4>
+<br>
+<img src="./src/assets/readme/user.png" alt="docker">
+<h3>Gerar sessão</h3>
+<h4>ROTA: / (POST)</h4>
+<br>
+<img src="./src/assets/readme/user.png" alt="docker">
 <br>
