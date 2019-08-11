@@ -67,35 +67,39 @@
 <h4>Método: (POST), Tipo: pública</h4>
 <h4>Rota: /users/</h4>
 <br>
-<img src="./src/assets/readme/user.png" alt="docker">
+<img src="./src/assets/readme/user.png" alt="user">
 <h3>Gerar sessão</h3>
 <h4>Método: (POST), Tipo: pública</h4>
 <h4>Rota: /</h4>
 <h4>O token gerado servirá para acessarmos as rotas privadas</h4>
 <br>
-<img src="./src/assets/readme/sessao.png" alt="docker">
+<img src="./src/assets/readme/sessao.png" alt="sessao">
 <br>
 <h3>Criação de artigo</h3>
 <h4>Método: (POST), Tipo: privada</h4>
 <h4>Rota: /artigo</h4>
 <h4>Obs: Nas rotas privadas, temos que colocar o nosso token gerado</h4>
-<img src="./src/assets/readme/rotas_privadas.png" alt="docker">
-<img src="./src/assets/readme/artigo.png" alt="docker">
-<img src="./src/assets/readme/artigo2.png" alt="docker">
+<img src="./src/assets/readme/rotas_privadas.png" alt="rotas_privadas">
+<img src="./src/assets/readme/artigo.png" alt="artigo">
+<img src="./src/assets/readme/artigo2.png" alt="artigo2">
 <br>
 <h3>Encontrar artigo via permalink</h3>
 <h4>Método: (GET), Tipo: privada</h4>
 <h4>Rota: /artigo/permalink/:permalink</h4>
-<img src="./src/assets/readme/permalink.png" alt="docker">
-<img src="./src/assets/readme/permalink2.png" alt="docker">
+<img src="./src/assets/readme/permalink.png" alt="permalink">
+<img src="./src/assets/readme/permalink2.png" alt="permalink2">
 <br>
 <h3>Listar artigos via paginação</h3>
 <h4>Método: (GET), Tipo: privada</h4>
 <h4>Rota: /artigo/all?page=0</h4>
-<img src="./src/assets/readme/paginacao.png" alt="docker">
+<img src="./src/assets/readme/paginacao.png" alt="paginacao">
 <br>
 <h3>Deletar artigo</h3>
 <h4>Método: (DELETE), Tipo: privada</h4>
 <h4>Rota: /artigo/:id</h4>
-<img src="./src/assets/readme/delete.png" alt="docker">
+<img src="./src/assets/readme/delete.png" alt="delete">
+<br>
+<h3>Rodar testes</h3>
+<h3>yarn test</h3>
+<img src="./src/assets/readme/test.png" alt="test">
 <br>
