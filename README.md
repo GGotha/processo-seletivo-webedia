@@ -54,7 +54,7 @@
 /users
 /
 /artigo
-/artigo/permalink/:permalink
+/artigo/permalink/:id
 /artigo/all?page=0
 /artigo/:id
 ```
@@ -81,7 +81,7 @@
 <br>
 <h3>Encontrar artigo via permalink</h3>
 <h4>Método: (GET), Tipo: privada</h4>
-<h4>Rota: /artigo/permalink/:permalink</h4>
+<h4>Rota: /artigo/permalink/:id</h4>
 <img src="./src/assets/readme/permalink.png" alt="permalink">
 <img src="./src/assets/readme/permalink2.png" alt="permalink2">
 <br>
