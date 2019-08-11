@@ -31,7 +31,7 @@
 <img src="./src/assets/readme/clone.png" alt="clone">
 
 <h3>Instale os pacotes</h3>
-<h4>Entre na pasta na qual você clonou, dê um yarn install para instalar todos os pacotes</h4>
+<h4>Entre na pasta na qual você clonou, e execute yarn install para instalar todos os pacotes</h4>
 <br>
 <img src="./src/assets/readme/install.png" alt="clone">
 
@@ -57,7 +57,8 @@
 /artigo/permalink/:permalink (GET)
 /artigo (POST)
 ``` -->
-<!-- ```
+
+```bash
 /users/ (POST)
 / (POST)
 /artigo/all?page=0 (GET)
@@ -65,5 +66,6 @@
 /artigo/:id (DELETE)
 /artigo/permalink/:permalink (GET)
 /artigo (POST)
-``` -->
+```
+
 <br>
