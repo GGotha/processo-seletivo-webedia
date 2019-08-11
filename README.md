@@ -1,7 +1,3 @@
-<h3 align="left">
-    Português
-</h3>
-
 ## :ballot_box_with_check: Para fazer
 
 - TDD - Testes Unitários (jest) :heavy_check_mark:
