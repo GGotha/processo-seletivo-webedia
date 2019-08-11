@@ -191,10 +191,8 @@ class ArtigoController {
 
       const getOnlyArtigo = getAllArtigos.entities[0];
 
-      console.log(getOnlyArtigo);
-
       if (getOnlyArtigo === undefined || null) {
-        throw new Error("bla");
+        throw new Error("Artigo indefinido");
       }
 
       return res.json({
