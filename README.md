@@ -52,16 +52,16 @@
 <br>
 <img src="./src/assets/readme/migration.png" alt="docker">
 
-<h4>Tipos de rotas existentes:</h4> -->
+<h3>Tipos de rotas existentes e como usá-las:</h3>
 
 ```bash
 /users/ (POST)
 / (POST)
-/artigo/all?page=0 (GET)
-/artigo/id/:id (GET)
-/artigo/:id (DELETE)
-/artigo/permalink/:permalink (GET)
-/artigo (POST)
+/artigo/all?page=0 (GET) <strong>rota privada</strong>
+/artigo/id/:id (GET) <strong>rota privada</strong>
+/artigo/:id (DELETE) <strong>rota privada</strong>
+/artigo/permalink/:permalink (GET) <strong>rota privada</strong>
+/artigo (POST) <strong>rota privada</strong>
 ```
 
 <h3>Criação de usuário</h3>
