@@ -86,5 +86,10 @@
 <h3>Encontrar artigo via permalink</h3>
 <h4>Método: (GET), Tipo: privada</h4>
 <h4>Rota: /artigo/permalink/:permalink</h4>
-<img src="./src/assets/readme/artigo2.png" alt="docker">
+<img src="./src/assets/readme/permalink.png" alt="docker">
+<br>
+<h3>Listar artigos via paginação</h3>
+<h4>Método: (GET), Tipo: privada</h4>
+<h4>Rota: /artigo/all?page=0</h4>
+<img src="./src/assets/readme/paginacao.png" alt="docker">
 <br>
