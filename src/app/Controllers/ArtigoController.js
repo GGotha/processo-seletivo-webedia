@@ -191,6 +191,12 @@ class ArtigoController {
 
       const getOnlyArtigo = getAllArtigos.entities[0];
 
+      console.log(getOnlyArtigo);
+
+      if (getOnlyArtigo === undefined || null) {
+        throw new Error("bla");
+      }
+
       return res.json({
         status: "success",
         msg: "Artigo encontrado com sucesso",
