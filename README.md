@@ -93,3 +93,8 @@
 <h4>Rota: /artigo/all?page=0</h4>
 <img src="./src/assets/readme/paginacao.png" alt="docker">
 <br>
+<h3>Deletar artigo</h3>
+<h4>Método: (DELETE), Tipo: privada</h4>
+<h4>Rota: /artigo/:id</h4>
+<img src="./src/assets/readme/delete.png" alt="docker">
+<br>
