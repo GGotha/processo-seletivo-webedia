@@ -48,7 +48,7 @@
 <img src="./src/assets/readme/db.png" alt="docker">
 
 <h3>Sincronização com o banco de dados</h3>
-<h4>Execute npx sequelize db:migrate dentro da pasta do projeto</h4>
+<h4>Execute yarn sequelize db:migrate dentro da pasta do projeto</h4>
 <br>
 <img src="./src/assets/readme/migration.png" alt="docker">
 
@@ -100,6 +100,6 @@
 <img src="./src/assets/readme/delete.png" alt="delete">
 <br>
 <h3>Rodar testes</h3>
-<h3>yarn test</h3>
+<h4>Execute yarn test no seu terminal</h4>
 <img src="./src/assets/readme/test.png" alt="test">
 <br>
