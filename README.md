@@ -55,24 +55,31 @@
 <h3>Tipos de rotas existentes e como usá-las:</h3>
 
 ```bash
-/users/ (POST)
-/ (POST)
-/artigo/all?page=0 (GET) <strong>rota privada</strong>
-/artigo/id/:id (GET) <strong>rota privada</strong>
-/artigo/:id (DELETE) <strong>rota privada</strong>
-/artigo/permalink/:permalink (GET) <strong>rota privada</strong>
-/artigo (POST) <strong>rota privada</strong>
+/users
+/
+/artigo
+/artigo/permalink/:permalink
+/artigo/all?page=0
+/artigo/id/:id
+/artigo/:id
 ```
 
 <h3>Criação de usuário</h3>
-<h4>Método: (POST)</h4>
+<h4>Método: (POST), Tipo: pública</h4>
 <h4>Rota: /users/</h4>
 <br>
 <img src="./src/assets/readme/user.png" alt="docker">
 <h3>Gerar sessão</h3>
-<h4>Método: (POST)</h4>
+<h4>Método: (POST), Tipo: pública</h4>
 <h4>Rota: /</h4>
 <h4>O token gerado servirá para acessarmos as rotas privadas</h4>
 <br>
 <img src="./src/assets/readme/sessao.png" alt="docker">
+<br>
+<h3>Criação de artigo</h3>
+<h4>Método: (POST), Tipo: privada</h4>
+<h4>Rota: /artigo</h4>
+<h4>Obs: Nas rotas privadas, temos que colocar o nosso token gerado</h4>
+<img src="./src/assets/readme/rotas_privadas.png" alt="docker">
+<img src="./src/assets/readme/artigo.png" alt="docker">
 <br>
