@@ -87,6 +87,7 @@
 <h4>Método: (GET), Tipo: privada</h4>
 <h4>Rota: /artigo/permalink/:permalink</h4>
 <img src="./src/assets/readme/permalink.png" alt="docker">
+<img src="./src/assets/readme/permalink2.png" alt="docker">
 <br>
 <h3>Listar artigos via paginação</h3>
 <h4>Método: (GET), Tipo: privada</h4>
