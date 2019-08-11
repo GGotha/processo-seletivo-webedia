@@ -99,7 +99,7 @@
 <h4>Rota: /artigo/:id</h4>
 <img src="./src/assets/readme/delete.png" alt="delete">
 <br>
-<h3>Rodar testes</h3>
+<h3>Testes Unitários (TDD)</h3>
 <h4>Execute yarn test no seu terminal</h4>
 <img src="./src/assets/readme/test.png" alt="test">
 <br>
