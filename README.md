@@ -60,7 +60,6 @@
 /artigo
 /artigo/permalink/:permalink
 /artigo/all?page=0
-/artigo/id/:id
 /artigo/:id
 ```
 
@@ -82,4 +81,10 @@
 <h4>Obs: Nas rotas privadas, temos que colocar o nosso token gerado</h4>
 <img src="./src/assets/readme/rotas_privadas.png" alt="docker">
 <img src="./src/assets/readme/artigo.png" alt="docker">
+<img src="./src/assets/readme/artigo2.png" alt="docker">
+<br>
+<h3>Encontrar artigo via permalink</h3>
+<h4>Método: (GET), Tipo: privada</h4>
+<h4>Rota: /artigo/permalink/:permalink</h4>
+<img src="./src/assets/readme/artigo2.png" alt="docker">
 <br>
